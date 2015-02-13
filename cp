@@ -31,17 +31,33 @@ int main() {
 	}
 }
 
-void cpfstr(){
+void cpfstr(string in, string out){
 	
 	return;
 }
 
-void cprwchar() {
+void cprwchar(string in, string out) {
 
 	return;
 }
 	
-void cprwcharr() {
-
+void cprwcharr(string in, string out) {
+	int n;
+     	int fd = open(in.c_str(), O_RDONLY);
+     	char buf[BUFSIZ];
+ 	int ofd = open(out.c_str(), O_RDWR|O_CREAT);
+ 	
+ 	if((n = read(fd, buf, BUFSIZ)) == 0)
+        {               
+        	perror("read");
+        }
+        
+        if((n = write(ofd, buf, BUFSIZ)) == 0)
+        {            
+        	perror("write");
+        }
+        
+        close(fd);
+	close(ofd);
 	return;
 }	
